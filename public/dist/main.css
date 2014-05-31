@@ -1,16 +1,22 @@
-﻿body {
+﻿.content {
+	margin-top: 50px;
+}
+.undecorated-link:hover {
+	text-decoration: none;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+body {
     background-color: #f5f5f5;
 }
 .navbar-header a.navbar-brand {
     font-size: 1.56em;
 }
 .navbar-inverse {
-    padding-left: 20px;
-    padding-right: 50px;
     padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: initial;
-    border-bottom: 2px solid #e19746;
+    border-color: transparent;
+    background-color: #d9230f;
 }
 .navbar-inverse .navbar-collapse .nav li:hover {
     background-color: #d93322;
@@ -23,7 +29,7 @@
 .header-image {
     height: 800%;
     margin-top: -20px;
-    background-image: url(../img/header.jpg);
+    background-image: url(../modules/core/img/header.jpg);
     background-size: cover;
     border-bottom: 4px solid #c35f18;
 }

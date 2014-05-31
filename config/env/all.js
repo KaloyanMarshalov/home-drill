@@ -6,7 +6,6 @@ module.exports = {
 		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
 		keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
 	},
-	db: 'mongodb://admin:adminpass123@ds053428.mongolab.com:53428/home-drill'
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
