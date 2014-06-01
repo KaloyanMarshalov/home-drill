@@ -1,6 +1,3 @@
-.content {
-	margin-top: 50px;
-}
 .undecorated-link:hover {
 	text-decoration: none;
 }
@@ -15,6 +12,7 @@ body {
 }
 .navbar-inverse {
     padding-top: 10px;
+    padding-bottom: 10px;
     border-color: transparent;
 }
 .navbar-inverse .navbar-collapse .nav li:hover {
@@ -27,7 +25,6 @@ body {
 }
 .header-image {
     height: 800%;
-    margin-top: -20px;
     background-image: url(../img/header.jpg);
     background-size: cover;
     border-bottom: 4px solid #c35f18;
@@ -89,4 +86,12 @@ hr {
     padding: 20px 0;  
     text-align: center;
     background-color: #e1bd95;
+}
+.navbar {
+    margin-bottom: 0px;
+    border-radius: initial;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
