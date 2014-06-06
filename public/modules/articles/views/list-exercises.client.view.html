@@ -1,0 +1,13 @@
+<section data-ng-controller="ExercisesController" data-ng-init="find()">
+	<div class="page-header">
+		<h1>Exercises</h1>
+	</div>
+	<div class="list-group">
+		<a data-ng-repeat="exercises in exercises" data-ng-href="#!/exercises/{{exercises._id}}" class="list-group-item">
+			{{exercise.name}}
+		</a>
+	</div>
+	<div class="alert alert-warning text-center" data-ng-if="exercises.$resolved && !exercises.length">
+		No exercises yet, why don't you <a href="/#!/exercises/create">create one</a>?
+	</div>
+</section>

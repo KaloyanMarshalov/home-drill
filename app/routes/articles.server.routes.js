@@ -4,19 +4,19 @@
  * Module dependencies.
  */
 var users = require('../../app/controllers/users'),
-	articles = require('../../app/controllers/articles');
+	exercises = require('../../app/controllers/exercises');
 
 module.exports = function(app) {
-	// Article Routes
-	app.route('/articles')
-		.get(articles.list)
-		.post(users.requiresLogin, articles.create);
+	// Exercise Routes
+    app.route('/exercises')
+		.get(exercises.list)
+		.post(users.requiresLogin, exercises.create);
 
-	app.route('/articles/:articleId')
-		.get(articles.read)
-		.put(users.requiresLogin, articles.hasAuthorization, articles.update)
-		.delete(users.requiresLogin, articles.hasAuthorization, articles.delete);
+	app.route('/exercises/:exerciseId')
+		.get(exercises.read)
+		.put(users.requiresLogin, exercises.hasAuthorization, exercises.update)
+		.delete(users.requiresLogin, exercises.hasAuthorization, exercises.delete);
 
-	// Finish by binding the article middleware
-	app.param('articleId', articles.articleByID);
+	// Finish by binding the exercise middleware
+	app.param('exerciseId', exercises.exerciseByID);
 };

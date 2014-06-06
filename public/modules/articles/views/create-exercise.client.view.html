@@ -1,0 +1,111 @@
+<section data-ng-controller="ExercisesController">
+    <div class="jumbotron">
+        <form class="form-horizontal" data-ng-submit="create()">
+            <fieldset>
+                <legend>Create an exercise</legend>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-2 control-label">Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="Name" data-ng-model="name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputType" class="col-md-2 control-label">Type</label>
+                            <div class="col-md-10">
+                                <span class="radio">
+                                    <label>
+                                        <input type="radio" name="type" id="optCardio" value="cardio" data-ng-model="type" />
+                                        Cardio
+                                    </label>
+                                </span>
+                                <span class="radio">
+                                    <label>
+                                        <input type="radio" name="type" id="optStrength" value="strength" data-ng-model="type" />
+                                        Strength
+                                    </label>
+                                </span>
+                                <span class="radio">
+                                    <label>
+                                        <input type="radio" name="type" id="optStretching" value="stretching" data-ng-model="type" />
+                                        Stretching
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDifficulty" class="col-md-2 control-label">Difficulty</label>
+                            <div class="col-md-10">
+                                <span class="radio">
+                                    <label>
+                                        <input type="radio" name="difficulty" id="optEasy" value="easy" data-ng-model="difficulty" />
+                                        Easy
+                                    </label>
+                                </span>
+                                <span class="radio">
+                                    <label>
+                                        <input type="radio" name="difficulty" id="optMedium" value="medium" data-ng-model="difficulty" />
+                                        Medium
+                                    </label>
+                                </span>
+                                <span class="radio">
+                                    <label>
+                                        <input type="radio" name="difficulty" id="optHard" value="hard" data-ng-model="difficulty" />
+                                        Hard
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputMuscleGr" class="col-md-2 control-label">Muscle groups</label>
+                            <div class="col-md-10">
+                                <select multiple="" class="form-control" data-ng-model="muscleGroup">
+                                    <option>Shoulders</option>
+                                    <option>Back</option>
+                                    <option>Chest</option>
+                                    <option>Core</option>
+                                    <option>Arms</option>
+                                    <option>Legs</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEquipment" class="col-md-2 control-label">Equipment</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="inputEquipment" placeholder="Equipment" data-ng-model="equipment" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPic" class="col-md-2 control-label">Picture URL</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="inputPic" placeholder="Public picture URL" data-ng-model="picture" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputYT" class="col-md-2 control-label">YouTube URL</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="inputYT" placeholder="YouTube URL" data-ng-model="youTube" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default">
+                        </div>
+                    </div>
+                   <!-- <div class="col-md-5">
+                        <div class="row">
+                            <div class="exercise-picture">
+                                <img ng-src="{{exercise.picture}}" src="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="youtube-video">
+                                Video HERE
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>

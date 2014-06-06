@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	Article = mongoose.model('Article'),
+	Exercise = mongoose.model('Exercise'),
 	_ = require('lodash');
 
 /**
@@ -17,7 +17,7 @@ var getErrorMessage = function(err) {
 		switch (err.code) {
 			case 11000:
 			case 11001:
-				message = 'Article already exists';
+				message = 'Exercise already exists';
 				break;
 			default:
 				message = 'Something went wrong';
@@ -32,98 +32,99 @@ var getErrorMessage = function(err) {
 };
 
 /**
- * Create a article
+ * Create an exercise
  */
 exports.create = function(req, res) {
-	var article = new Article(req.body);
-	article.user = req.user;
+	var exercise = new Exercise(req.body);
+	exercise.user = req.user;
 
-	article.save(function(err) {
+	exercise.save(function (err) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(article);
+		    res.jsonp(exercise);
 		}
 	});
 };
 
 /**
- * Show the current article
+ * Show the current exercise
  */
 exports.read = function(req, res) {
-	res.jsonp(req.article);
+	res.jsonp(req.exercise);
 };
 
 /**
- * Update a article
+ * Update an exercise
  */
 exports.update = function(req, res) {
-	var article = req.article;
+    var exercise = req.exercise;
 
-	article = _.extend(article, req.body);
+    exercise = _.extend(exercise, req.body);
 
-	article.save(function(err) {
+    exercise.save(function (err) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(article);
+		    res.jsonp(exercise);
 		}
 	});
 };
 
 /**
- * Delete an article
+ * Delete an exercise
  */
 exports.delete = function(req, res) {
-	var article = req.article;
+    var exercise = req.exercise;
 
-	article.remove(function(err) {
+    exercise.remove(function (err) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(article);
+		    res.jsonp(exercise);
 		}
 	});
 };
 
 /**
- * List of Articles
+ * List of Exercises
  */
+
 exports.list = function(req, res) {
-	Article.find().sort('-created').populate('user', 'displayName').exec(function(err, articles) {
+    Exercise.find().sort('-created').populate('user', 'displayName').exec(function (err, exercises) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(articles);
+		    res.jsonp(exercises);
 		}
 	});
 };
 
 /**
- * Article middleware
+ * Exercise middleware
  */
-exports.articleByID = function(req, res, next, id) {
-	Article.findById(id).populate('user', 'displayName').exec(function(err, article) {
+exports.exerciseByID = function (req, res, next, id) {
+    Exercise.findById(id).populate('user', 'displayName').exec(function (err, exercise) {
 		if (err) return next(err);
-		if (!article) return next(new Error('Failed to load article ' + id));
-		req.article = article;
+		if (!exercise) return next(new Error('Failed to load exercise ' + id));
+		req.exercise = exercise;
 		next();
 	});
 };
 
 /**
- * Article authorization middleware
+ * Exercise authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.article.user.id !== req.user.id) {
+    if (req.exercise.user.id !== req.user.id) {
 		return res.send(403, {
 			message: 'User is not authorized'
 		});
