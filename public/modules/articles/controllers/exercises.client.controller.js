@@ -23,7 +23,7 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 			this.title = '';
 			this.content = '';
 		};
-        //TODO: remove, update, find, findOne for exercises!!!
+
 		$scope.remove = function(exercise) {
 			if (exercise) {
 				exercise.$remove();
@@ -58,6 +58,19 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 			$scope.exercise = Exercises.get({
 				exerciseId: $stateParams.exerciseId
 			});
+		};
+
+		$scope.range = function () {
+		    var range = [];
+		    //for (var i = 0; i < $scope.artists.length; i = i + 3) {
+		    //    range.push(i);
+		    //}
+		    for (var i = 0; i < $scope.exercises.length; i++) {
+		        if (i % 4 === 0) {
+		            range.push(i);
+		        }
+		    }
+		    return range;
 		};
 	}
 ]);

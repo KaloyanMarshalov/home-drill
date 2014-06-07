@@ -1,7 +1,4 @@
-﻿.content {
-	margin-top: 50px;
-}
-.undecorated-link:hover {
+﻿.undecorated-link:hover {
 	text-decoration: none;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -91,4 +88,11 @@ hr {
     padding: 20px 0;  
     text-align: center;
     background-color: #e1bd95;
+}
+.navbar {
+    border-radius: initial;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
