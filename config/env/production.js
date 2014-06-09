@@ -5,7 +5,7 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.min.css',
+				'http://bootswatch.com/simplex/bootstrap.min.css',
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
