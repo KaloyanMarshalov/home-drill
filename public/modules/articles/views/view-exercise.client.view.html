@@ -20,30 +20,44 @@
                     <a class="btn btn-primary" href="/#!/exercises/{{exercise._id}}/edit">
                         <i class="glyphicon glyphicon-edit"></i>
                     </a>
-                    <a class="btn btn-primary" data-ng-click="remove(exercise);">
+                    <a class="btn btn-primary" data-ng-click="remove();">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
                 </div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <strong>Type</strong><br />
-                        <strong>Difficulty</strong><br />
-                        <strong>Muscle groups</strong><br />
-                        <strong>Equipment used</strong>
-                    </div>
-                    <div class="col-md-3">
-                        {{exercise.type}}<br />
-                        {{exercise.difficulty}}<br />
-                        {{exercise.muscleGroup}}<br />
-                        {{exercise.equipment}}
-                    </div>
+                <div class="row exercise-properties">
+                    <p>
+                        <strong>Type</strong><span class="pull-right">{{exercise.type}}</span>
+                    </p>
+                    <p>
+                        <strong>Difficulty</strong><span class="pull-right">{{exercise.difficulty}}</span>
+                    </p>
+                    <p>
+                        <strong>Muscle groups</strong><span class="pull-right">{{exercise.muscleGroup | displayMuscles}}</span>
+                    </p>
+                    <p>
+                        <strong>Equipment used</strong><span class="pull-right">{{exercise.equipment}}</span>
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <img ng-src="{{exercise.picture}}" src="" class="responsive-image" />
                     </div>
                     <div class="col-md-6">
-                        YT here
+                        <div id="player"></div>
+                      <!--  <script>
+                            var player;
+                            function onYouTubeIframeAPIReady() {
+                                player = new YT.Player('player', {
+                                    height: '390',
+                                    width: '640',
+                                    videoId: 'M7lc1UVf-VE',
+                                    events: {
+                                        'onReady': onPlayerReady,
+                                        'onStateChange': onPlayerStateChange
+                                    }
+                                });
+                            }
+                        </script>-->
                     </div>
                 </div>
             </div>

@@ -89,8 +89,13 @@ hr {
 }
 .navbar {
     border-radius: initial;
+    margin-bottom: 0;
 }
 .row {
     margin-left: 0px;
     margin-right: 0px;
+}
+.exercise-properties {
+    margin-top: 50px;
+    margin-bottom: 10px;
 }

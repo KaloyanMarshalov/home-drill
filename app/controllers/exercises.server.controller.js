@@ -124,10 +124,10 @@ exports.exerciseByID = function (req, res, next, id) {
  * Exercise authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-    if (req.exercise.user.id !== req.user.id) {
+    /*if (req.exercise.user.id !== req.user.id) {
 		return res.send(403, {
 			message: 'User is not authorized'
 		});
-	}
+	}*/
 	next();
 };

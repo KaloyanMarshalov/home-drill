@@ -62,9 +62,6 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 
 		$scope.range = function () {
 		    var range = [];
-		    //for (var i = 0; i < $scope.artists.length; i = i + 3) {
-		    //    range.push(i);
-		    //}
 		    for (var i = 0; i < $scope.exercises.length; i++) {
 		        if (i % 4 === 0) {
 		            range.push(i);
@@ -73,4 +70,10 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 		    return range;
 		};
 	}
-]);
+]).filter('displayMuscles', function () {
+    return function (input) {
+        var output = "";
+        output = input.join(', ');
+        return output;
+    };
+});
