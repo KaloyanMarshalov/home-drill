@@ -14,7 +14,13 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 				picture: this.picture,
                 youTube: this.youTube
 			});
-			exercise.$save(function(response) {
+
+			if (!this.equipment) {
+			    exercise.equipment = 'None'
+			};
+
+			exercise.$save(function (response) {
+			    
 				$location.path('exercise/' + response._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
@@ -42,6 +48,10 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 
 		$scope.update = function() {
 		    var exercise = $scope.exercise;
+
+		    if (!this.equipment) {
+		        exercise.equipment = 'None'
+		    };
 
 			exercise.$update(function() {
 				$location.path('exercises/' + exercise._id);

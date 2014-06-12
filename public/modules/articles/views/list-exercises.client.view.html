@@ -1,16 +1,21 @@
 <section data-ng-controller="ExercisesController" data-ng-init="find()">
-	<div class="page-header">
-		<h1>Exercises</h1>
-	</div>
-	<div class="row" ng-repeat="row in range()">
-        <div class="col-md-3" data-ng-repeat="exercise in exercises.slice(row, row + 4)">
-            <a data-ng-href="#!/exercises/{{exercise._id}}" class="list-group-item text-center">
-                <h4>{{exercise.name}}</h4>
-                <img ng-src="{{exercise.picture}}" src="" class="responsive-image" />
-            </a>
+    <div class="container">
+        <div class="page-header row">
+            <h1 class="text-center">Exercises</h1>
+            <form>
+                <input type="text" class="form-control" placeholder="Search">
+            </form>
         </div>
-	</div>
-	<div class="alert alert-warning text-center" data-ng-if="exercises.$resolved && !exercises.length">
-		No exercises yet, why don't you <a href="/#!/exercises/create">create one</a>?
-	</div>
+        <div class="row" ng-repeat="row in range()">
+            <div class="col-md-3" data-ng-repeat="exercise in exercises.slice(row, row + 4)">
+                <a data-ng-href="#!/exercises/{{exercise._id}}" class="list-group-item text-center">
+                    <h4>{{exercise.name}}</h4>
+                    <img ng-src="{{exercise.picture}}" src="" class="responsive-image" />
+                </a>
+            </div>
+        </div>
+        <div class="alert alert-warning text-center" data-ng-if="exercises.$resolved && !exercises.length">
+            No exercises yet, why don't you <a href="/#!/exercises/create">create one</a>?
+        </div>
+    </div>
 </section>

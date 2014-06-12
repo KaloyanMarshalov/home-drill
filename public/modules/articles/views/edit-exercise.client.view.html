@@ -1,6 +1,6 @@
 <section data-ng-controller="ExercisesController" data-ng-init="findOne()">
     <div class="jumbotron">
-        <form class="form-horizontal" data-ng-submit="create()">
+        <form class="form-horizontal" data-ng-submit="update()">
             <fieldset>
                 <legend>Create an exercise</legend>
                 <div class="row">
@@ -16,19 +16,19 @@
                             <div class="col-md-10">
                                 <span class="radio">
                                     <label>
-                                        <input type="radio" name="type" id="optCardio" value="cardio" data-ng-model="exercise.type" />
+                                        <input type="radio" name="type" id="optCardio" value="Cardio" data-ng-model="exercise.type" />
                                         Cardio
                                     </label>
                                 </span>
                                 <span class="radio">
                                     <label>
-                                        <input type="radio" name="type" id="optStrength" value="strength" data-ng-model="exercise.type" />
+                                        <input type="radio" name="type" id="optStrength" value="Strength" data-ng-model="exercise.type" />
                                         Strength
                                     </label>
                                 </span>
                                 <span class="radio">
                                     <label>
-                                        <input type="radio" name="type" id="optStretching" value="stretching" data-ng-model="exercise.type" />
+                                        <input type="radio" name="type" id="optStretching" value="Stretching" data-ng-model="exercise.type" />
                                         Stretching
                                     </label>
                                 </span>
@@ -39,19 +39,19 @@
                             <div class="col-md-10">
                                 <span class="radio">
                                     <label>
-                                        <input type="radio" name="difficulty" id="optEasy" value="easy" data-ng-model="exercise.difficulty" />
+                                        <input type="radio" name="difficulty" id="optEasy" value="Easy" data-ng-model="exercise.difficulty" />
                                         Easy
                                     </label>
                                 </span>
                                 <span class="radio">
                                     <label>
-                                        <input type="radio" name="difficulty" id="optMedium" value="medium" data-ng-model="exercise.difficulty" />
+                                        <input type="radio" name="difficulty" id="optMedium" value="Medium" data-ng-model="exercise.difficulty" />
                                         Medium
                                     </label>
                                 </span>
                                 <span class="radio">
                                     <label>
-                                        <input type="radio" name="difficulty" id="optHard" value="hard" data-ng-model="exercise.difficulty" />
+                                        <input type="radio" name="difficulty" id="optHard" value="Hard" data-ng-model="exercise.difficulty" />
                                         Hard
                                     </label>
                                 </span>
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-default">
+                            <input type="submit" value="Update" class="btn btn-default">
                         </div>
                     </div>
                     <div class="col-md-5">
