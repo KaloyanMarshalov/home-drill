@@ -15,8 +15,15 @@
     <div class="jumbotron container">
         <div class="row">
             <h1 data-ng-bind="exercise.name" class="text-center"></h1>
+            <div class="alert alert-dismissable alert-success text-center" ng-show="successfulAdding">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                Exercise <strong data-ng-bind="exercise.name"></strong> was added to your workout. Please go to the <a href="/#!/workouts/create">create a workout</a> page to complete the changes.
+            </div>
             <div class="col-md-7">
                 <div class="pull-right">
+                    <a class="btn btn-primary" data-ng-click="addToWorkout();">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </a>
                     <a class="btn btn-primary" href="/#!/exercises/{{exercise._id}}/edit">
                         <i class="glyphicon glyphicon-edit"></i>
                     </a>
@@ -44,25 +51,11 @@
                     </div>
                     <div class="col-md-6">
                         <div id="player"></div>
-                      <!--  <script>
-                            var player;
-                            function onYouTubeIframeAPIReady() {
-                                player = new YT.Player('player', {
-                                    height: '390',
-                                    width: '640',
-                                    videoId: 'M7lc1UVf-VE',
-                                    events: {
-                                        'onReady': onPlayerReady,
-                                        'onStateChange': onPlayerStateChange
-                                    }
-                                });
-                            }
-                        </script>-->
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
-                Similar exercises here
+                similar exercises
             </div>
         </div>
     </div>

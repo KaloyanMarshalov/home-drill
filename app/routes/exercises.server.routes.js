@@ -6,7 +6,7 @@
 var users = require('../../app/controllers/users'),
 	exercises = require('../../app/controllers/exercises');
 
-module.exports = function(app) {
+module.exports = function (app) {
 	// Exercise Routes
     app.route('/exercises')
 		.get(exercises.list)

@@ -16,18 +16,14 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 			});
 
 			if (!this.equipment) {
-			    exercise.equipment = 'None'
-			};
+			    exercise.equipment = 'None';
+			}
 
 			exercise.$save(function (response) {
-			    
 				$location.path('exercise/' + response._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-
-			this.title = '';
-			this.content = '';
 		};
 
 		$scope.remove = function(exercise) {
@@ -50,8 +46,8 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 		    var exercise = $scope.exercise;
 
 		    if (!this.equipment) {
-		        exercise.equipment = 'None'
-		    };
+		        exercise.equipment = 'None';
+		    }
 
 			exercise.$update(function() {
 				$location.path('exercises/' + exercise._id);
@@ -79,10 +75,17 @@ angular.module('exercises').controller('ExercisesController', ['$scope', '$state
 		    }
 		    return range;
 		};
+
+		$scope.addToWorkout = function () {
+		    var storageLength = sessionStorage.length;
+
+		    sessionStorage.setItem('exercise' + storageLength, $scope.exercise._id);
+		    $scope.successfulAdding = !$scope.successfulAdding;
+		};
 	}
 ]).filter('displayMuscles', function () {
     return function (input) {
-        var output = "";
+        var output = '';
         output = input.join(', ');
         return output;
     };

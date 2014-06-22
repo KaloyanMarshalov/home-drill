@@ -1,0 +1,41 @@
+﻿<section data-ng-controller="WorkoutsController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 jumbotron">
+                <form class="form-horizontal" data-ng-submit="create()">
+                    <input type="text" class="form-control" placeholder="Please insert name for the workout!" data-ng-model="workoutName"/>
+                    <h1>{{currExercise.name}}</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img ng-src ="{{currExercise.picture}}" class="responsive-image" />
+                        </div>
+                        <div class="col-md-6">
+                            Youtube video
+                        </div>
+                    </div>
+                    <p class="text-center">
+                        Please choose: <br />
+                        <label>
+                            <input type="radio" name="type" id="optRepetitions" value="Repetitions" data-ng-model="type" />
+                            Repetitions
+                        </label>
+                        <label>
+                            <input type="radio" name="type" id="optDuration" value="Duration" data-ng-model="type" data-ng-click="showTimer();"/>
+                            Duration
+                        </label>
+                        <div class="input-group" data-ng-show="durationSelected">
+                            <input type="text" value="1:00" class="form-control" disabled />
+                            <span class="input-group-btn">
+                                <a class="btn btn-warning">+</a>
+                                <a class="btn btn-warning">-</a>
+                            </span>
+                        </div>
+                    </p>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Next" class="btn btn-default">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
