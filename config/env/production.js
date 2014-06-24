@@ -18,7 +18,6 @@ module.exports = {
 		},
 		css: [
             'public/dist/application.min.css',
-            'public/dist/main.css'
             ],
 		js: 'public/dist/application.min.js'
 	}

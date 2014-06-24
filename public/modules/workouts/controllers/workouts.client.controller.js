@@ -15,15 +15,13 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 	        storageExercises.push(storageExercise);
 	    }
 	    console.log(storageExercises);
-	    $scope.currExercise = storageExercises[storageIndex];
+	    $scope.currStorageEx = storageExercises[storageIndex];
 
 	    $scope.showTimer = function () {
 	        $scope.durationSelected = true;
 	    };
 
 	    $scope.create = function () {
-	        console.log(workoutExercises);
-
 	        if (storageIndex === sessionStorage.length) {
 	            var workout = new Workouts({
 	                name: this.workoutName,
@@ -36,19 +34,22 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 	            }, function (errorResponse) {
 	                $scope.error = errorResponse.data.message;
 	            });
+                // Clear the sessionStorage after saving the workout
 	            sessionStorage.clear();
+	            storageIndex = 0;
 	        } else {
 	            workoutExercises.push({
-	                name: $scope.currExercise.name,
-	                exerciseId: $scope.currExercise._id,
+	                name: $scope.currStorageEx.name,
+	                picture: $scope.currStorageEx.picture,
 	                type: this.type,
 	                time: this.time
 	            });
 
 	            storageIndex += 1;
-	            $scope.currExercise = storageExercises[storageIndex];
+	            $scope.currStorageEx = storageExercises[storageIndex];
 	            console.log(storageIndex);
 	        }
+	        console.log(workoutExercises);
 	    };
 
 	    $scope.remove = function (workout) {
@@ -79,12 +80,18 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 
 	    $scope.find = function () {
 	        $scope.workouts = Workouts.query();
+	        console.log($scope.workouts);
 	    };
 
 	    $scope.findOne = function () {
 	        $scope.workout = Workouts.get({
 	            workoutId: $stateParams.workoutId
 	        });
+	    };
+
+	    $scope.execute = function () {
+	        var time = $scope.time,
+                workoutPart = $scope.workoutPart;
 	    };
 	}
 ]);

@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
  */
 var ExerciseSchema = new Schema({
     name: String,
-    type: String,
+    type: { type: String },
     difficulty: String,
     muscleGroup: [String],
     equipment: String,

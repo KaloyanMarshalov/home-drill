@@ -3,11 +3,11 @@
         <div class="page-header row">
             <h1 class="text-center">Exercises</h1>
             <form>
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Search" ng-model="searchExercises">
             </form>
         </div>
         <div class="row" ng-repeat="row in range()">
-            <div class="col-md-3" data-ng-repeat="exercise in exercises.slice(row, row + 4)">
+            <div class="col-md-3" data-ng-repeat="exercise in exercises.slice(row, row + 4) | filter: searchExercises">
                 <a data-ng-href="#!/exercises/{{exercise._id}}" class="list-group-item text-center">
                     <h4>{{exercise.name}}</h4>
                     <img ng-src="{{exercise.picture}}" src="" class="responsive-image" />

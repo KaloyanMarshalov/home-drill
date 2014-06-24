@@ -12,10 +12,10 @@ var mongoose = require('mongoose'),
 
 var WorkoutSchema = new Schema({
     name: String,
-    exrcises: [{
+    exercises: [{
         name: String,
-        exerciseId: String,
-        type: String,   //duration or repetitions
+        picture: String,
+        type: { type: String },   //duration or repetitions
         time: {
             type: Number,
             min: 0,

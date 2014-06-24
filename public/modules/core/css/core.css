@@ -45,13 +45,33 @@ body {
     margin-bottom: 5%;
     color: #fafafa;
     font-family: 'Merriweather', serif;
-    font-size: 3.5em;
+    font-size: 3.5vw;
     text-shadow: 1px 1px 1px #000;
     font-weight: bold;
 }
+@media (max-width: 1024px) {
+    .header-content h1 {
+        font-size: 4vw;
+    }
+}
+@media (max-width: 800px) {
+    .header-content h1 {
+        font-size: 5vw;
+    }
+}
+@media (max-width: 720px) {
+    .header-content h1 {
+        font-size: 5.5vw;
+    }
+}
+@media (max-width: 640px) {
+    .header-content h1 {
+        font-size: 36px;
+    }
+}
 .jumbotron {
     background-color: rgba(0, 0, 0, 0.00);
-    margin: 0;
+    margin: 0 auto;
 }
 hr {
     margin: 0;

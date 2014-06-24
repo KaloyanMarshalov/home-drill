@@ -1,0 +1,23 @@
+﻿<section data-ng-controller="WorkoutsController" data-ng-init="findOne()">
+    <div class="jumbotron container">
+        <h1 data-ng-bind="workout.name" class="text-center"></h1>
+        <div class="row">
+            <div class="col-md-7 text-center">
+                <p data-ng-hide="start">Press the strat button to begin your workout. Make sure you have enough room and time for a quality experience. For exercises of type repetitions you need to manually click on the screen (or press space bar) to proceed when ready. <strong>Don't forget to have fun!</strong></p>
+                <div data-ng-show="start">
+                    <h2 class="text-info">{{workoutPart}}</h2>
+                    <div id="timer">
+                        {{time}}
+                    </div>
+                </div>
+                <a class="btn btn-success btn-lg" data-ng-click="start = !start; execute();" data-ng-hide="start">Start</a>
+            </div>
+            <div class="col-md-5">
+                <p>Current exercise: <strong data-ng-bind="workout.exercises[0].name || currExercise.name"></strong><br />
+                   Type of exercise: <strong data-ng-bind="workout.exercises[0].type || currExercise.type"></strong><br />
+                   <img ng-src="{{workout.exercises[0].picture || currExercise.picture}}" class="responsive-image" />
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
