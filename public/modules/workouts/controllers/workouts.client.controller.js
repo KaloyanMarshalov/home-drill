@@ -1,24 +1,39 @@
 ﻿'use strict';
 
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', 'Exercises',
-	function ($scope, $stateParams, $location, Authentication, Workouts, Exercises) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', '$timeout', 'Authentication', 'Workouts', 'Exercises',
+	function ($scope, $stateParams, $location, $timeout, Authentication, Workouts, Exercises) {
 	    $scope.authentication = Authentication;
         
 	    var storageExercises = [];
 	    var storageIndex = 0;
 	    var workoutExercises = [];
-        
+        //fill an array with exercises from sessionStorage
 	    for (var prop in sessionStorage) {
 	        var storageExercise = Exercises.get({
 	            exerciseId: sessionStorage.getItem(prop)
 	        });
 	        storageExercises.push(storageExercise);
 	    }
-	    console.log(storageExercises);
 	    $scope.currStorageEx = storageExercises[storageIndex];
 
-	    $scope.showTimer = function () {
+	    $scope.showTimerSelect = function () {
 	        $scope.durationSelected = true;
+	    };
+        
+	    $scope.exerciseTime = 0;
+	    $scope.incrementTime = function () {
+	        if ($scope.exerciseTime === 120) {
+	            return;
+	        } else {
+	            $scope.exerciseTime += 10;
+	        }
+	    };
+	    $scope.decrementTime = function () {
+	        if ($scope.exerciseTime === 0) {
+	            return;
+	        } else {
+	            $scope.exerciseTime -= 10;
+	        }
 	    };
 
 	    $scope.create = function () {
@@ -37,17 +52,18 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
                 // Clear the sessionStorage after saving the workout
 	            sessionStorage.clear();
 	            storageIndex = 0;
-	        } else {
+	        } else {    //take data from client view and push an Exercise Obj into an array
 	            workoutExercises.push({
 	                name: $scope.currStorageEx.name,
 	                picture: $scope.currStorageEx.picture,
 	                type: this.type,
-	                time: this.time
+	                time: this.exerciseTime
 	            });
 
 	            storageIndex += 1;
 	            $scope.currStorageEx = storageExercises[storageIndex];
-	            console.log(storageIndex);
+	            $scope.exerciseTime = 0;
+	            $scope.durationSelected = false;
 	        }
 	        console.log(workoutExercises);
 	    };
@@ -88,10 +104,66 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 	            workoutId: $stateParams.workoutId
 	        });
 	    };
+        
+        //Function for displaying ammount of seconds in a timer like fashion
+	    $scope.timerFunction = function (time) {
+	        if (time <= 9) {
+	            $scope.time = '0:0' + time;
+	        } else if (time <= 59) {
+	            $scope.time = '0:' + time;
+	        } else {
+	            var minutes = time / 60 | 0,
+                    seconds = time % 60;
+	            if (seconds <= 9) {
+	                $scope.time = minutes + ':0' + seconds;
+	            } else {
+	                $scope.time = minutes + ':' + seconds;
+	            }
+	        }
+	    };
 
+	    var prepTime = 11,
+            exerciseTime = 0,
+            playedExerciseIndex = 0,
+            excludedSeconds = 0,
+            workoutTimeout;
+        
+        //Execution of workout logic
 	    $scope.execute = function () {
-	        var time = $scope.time,
-                workoutPart = $scope.workoutPart;
+	        $scope.currExercise = $scope.workout.exercises[playedExerciseIndex];
+
+	        if (prepTime === 0) {
+
+	            exerciseTime = $scope.currExercise.time;
+	            $scope.workoutPart = 'Exercise';
+
+	            if ($scope.currExercise.type === 'Repetitions') {
+	                $scope.continueWorkoutBtn = true;
+	                $scope.continueWorkout = function () {
+	                    playedExerciseIndex += 1;
+	                    prepTime = 11;
+	                };
+	            } else {
+	                exerciseTime -= excludedSeconds;
+	                excludedSeconds += 1;
+	                if (exerciseTime === 0) {
+	                    playedExerciseIndex += 1;
+	                    prepTime = 11;
+	                    excludedSeconds = 0;
+	                }
+	                $scope.timerFunction(exerciseTime);
+	            }
+	        } else {
+	            $scope.workoutPart = 'Preparation time';
+	            prepTime--;
+	            $scope.timerFunction(prepTime);
+
+	        }
+	        if (playedExerciseIndex < $scope.workout.exercises.length) {
+	            workoutTimeout = $timeout($scope.execute, 1000);
+	        } else {
+	            $scope.endWorkout = true;
+	        }
 	    };
 	}
 ]);

@@ -20,14 +20,14 @@
                             Repetitions
                         </label>
                         <label>
-                            <input type="radio" name="type" id="optDuration" value="Duration" data-ng-model="type" data-ng-click="showTimer();"/>
+                            <input type="radio" name="type" id="optDuration" value="Duration" data-ng-model="type" data-ng-click="showTimerSelect();"/>
                             Duration
                         </label>
                         <div class="input-group" data-ng-show="durationSelected">
-                            <input type="text" value="1:00" class="form-control" disabled />
+                            <input type="text" value="{{exerciseTime}}" class="form-control" disabled />
                             <span class="input-group-btn">
-                                <a class="btn btn-warning">+</a>
-                                <a class="btn btn-warning">-</a>
+                                <a class="btn btn-warning" data-ng-click="incrementTime();">+</a>
+                                <a class="btn btn-warning" data-ng-click="decrementTime();">-</a>
                             </span>
                         </div>
                     </p>
